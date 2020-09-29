@@ -1,13 +1,13 @@
 package com.example.myapplication.domain;
 
-import io.reactivex.Flowable;
+import io.reactivex.Single;
 
 public abstract class UseCase<RequestFormat, ResponseFormat> {
     public void execute(RequestFormat requestParam, ICallBack<ResponseFormat> callback){
-        buildUseCaseFlowable(requestParam)
+        buildUseCaseSingle(requestParam)
                 .subscribe((response)->callback.onResponse(response));
     }
-    protected abstract Flowable<ResponseFormat> buildUseCaseFlowable(RequestFormat requestParam);
+    protected abstract Single<ResponseFormat> buildUseCaseSingle(RequestFormat requestParam);
 
     public interface ICallBack<ResponseFormat>{
         void onResponse(ResponseFormat response);

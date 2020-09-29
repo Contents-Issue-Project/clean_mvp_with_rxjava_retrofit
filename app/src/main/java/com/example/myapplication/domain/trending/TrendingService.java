@@ -3,8 +3,8 @@ package com.example.myapplication.domain.trending;
 import com.example.myapplication.data.trending.TrendingParam;
 import com.example.myapplication.data.trending.TrendingResource;
 
-import io.reactivex.Flowable;
+import io.reactivex.Single;
 
 public interface TrendingService {
-    public Flowable<TrendingResource> getTrending(TrendingParam trendingParam);
+    public Single<TrendingResource> getTrending(TrendingParam trendingParam);
 }

@@ -4,7 +4,7 @@ import com.example.myapplication.data.trending.TrendingParam;
 import com.example.myapplication.data.trending.TrendingRepository;
 import com.example.myapplication.data.trending.TrendingResource;
 
-import io.reactivex.Flowable;
+import io.reactivex.Single;
 
 public class TrendingServiceImpl implements TrendingService {
     //원래 주입되어야 함
@@ -15,13 +15,13 @@ public class TrendingServiceImpl implements TrendingService {
     }
 
     @Override
-    public Flowable<TrendingResource> getTrending(TrendingParam trendingParam) {
+    public Single<TrendingResource> getTrending(TrendingParam trendingParam) {
         return mTrendingDataSource.getTrending(trendingParam)
                 .flatMap(this::someProcessing);
     }
 
-    private Flowable<TrendingResource> someProcessing(TrendingResource resourceFlowable){
+    private Single<TrendingResource> someProcessing(TrendingResource resourceSingle){
         System.out.println("some processing");
-        return Flowable.just(resourceFlowable);
+        return Single.just(resourceSingle);
     }
 }

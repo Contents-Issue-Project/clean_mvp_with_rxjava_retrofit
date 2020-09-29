@@ -2,7 +2,7 @@ package com.example.myapplication.data.trending;
 
 import com.example.myapplication.domain.trending.TrendingDataSource;
 
-import io.reactivex.Flowable;
+import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -26,7 +26,7 @@ public class TrendingRepository implements TrendingDataSource {
     }
 
     @Override
-    public Flowable<TrendingResource> getTrending(TrendingParam trendingParam) {
+    public Single<TrendingResource> getTrending(TrendingParam trendingParam) {
         return mTrendingRemote.getTrending(trendingParam)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());

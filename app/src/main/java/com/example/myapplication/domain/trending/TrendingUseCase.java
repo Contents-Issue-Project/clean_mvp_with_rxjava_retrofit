@@ -4,7 +4,7 @@ import com.example.myapplication.data.trending.TrendingParam;
 import com.example.myapplication.data.trending.TrendingResource;
 import com.example.myapplication.domain.UseCase;
 
-import io.reactivex.Flowable;
+import io.reactivex.Single;
 
 public class TrendingUseCase extends UseCase<TrendingParam, TrendingResource> {
     private TrendingService mTrendingService;
@@ -19,7 +19,7 @@ public class TrendingUseCase extends UseCase<TrendingParam, TrendingResource> {
 
 
     @Override
-    protected Flowable<TrendingResource> buildUseCaseFlowable(TrendingParam trendingParam) {
+    protected Single<TrendingResource> buildUseCaseSingle(TrendingParam trendingParam) {
         return mTrendingService.getTrending(trendingParam);
     }
 
