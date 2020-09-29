@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                 TrendingParam param = new TrendingParam();
                 param.mediaType = "movie";
                 param.timeWindow = "day";
-                param.apiKey = "yourApiKey";
+                param.apiKey = "yourAPIKey";
                 trendingPresenter.loadTrending(param);
             }
         });

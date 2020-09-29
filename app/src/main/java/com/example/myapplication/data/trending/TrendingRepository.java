@@ -27,8 +27,6 @@ public class TrendingRepository implements TrendingDataSource {
 
     @Override
     public Single<TrendingResource> getTrending(TrendingParam trendingParam) {
-        return mTrendingRemote.getTrending(trendingParam)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+        return mTrendingRemote.getTrending(trendingParam);
     }
 }

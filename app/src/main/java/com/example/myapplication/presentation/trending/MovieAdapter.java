@@ -1,6 +1,5 @@
 package com.example.myapplication.presentation.trending;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.data.trending.TrendingResource;
+import com.example.myapplication.util.DataUnavailableException;
+import com.example.myapplication.util.WrongRequestException;
 
 import java.util.ArrayList;
 
@@ -76,5 +77,15 @@ implements TrendingContract.View{
             addItem(new MovieItem(movie.title, movie.average));
         }
         notifyDataSetChanged();
+    }
+
+    @Override
+    public void handleWrongRequest(WrongRequestException exception) {
+        System.out.println("Wrong Request");
+    }
+
+    @Override
+    public void handleDataUnavailable(DataUnavailableException exception) {
+        System.out.println("Data Unavailable");
     }
 }
