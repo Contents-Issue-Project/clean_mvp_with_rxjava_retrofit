@@ -1,11 +1,13 @@
 package com.example.myapplication.domain;
 
 import io.reactivex.Single;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 public abstract class UseCase<RequestFormat, ResponseFormat> {
     public void execute(RequestFormat requestParam, ISuccessCallBack<ResponseFormat> successCallback,
                         IErrorCallBack errorCallback){
         buildUseCaseSingle(requestParam)
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((response)->successCallback.onResponse(response),
                         (e)->errorCallback.onError(e));
     }

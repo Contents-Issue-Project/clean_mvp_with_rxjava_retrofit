@@ -1,12 +1,11 @@
 package com.example.myapplication.data.trending;
 
+import com.example.myapplication.data.Repository;
 import com.example.myapplication.domain.trending.TrendingDataSource;
 
 import io.reactivex.Single;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 
-public class TrendingRepository implements TrendingDataSource {
+public class TrendingRepository extends Repository<TrendingResource> implements TrendingDataSource {
     private static TrendingRepository INSTANCE = null;
 
     private final TrendingDataSource mTrendingRemote;
@@ -27,6 +26,6 @@ public class TrendingRepository implements TrendingDataSource {
 
     @Override
     public Single<TrendingResource> getTrending(TrendingParam trendingParam) {
-        return mTrendingRemote.getTrending(trendingParam);
+        return setThread(mTrendingRemote.getTrending(trendingParam));
     }
 }

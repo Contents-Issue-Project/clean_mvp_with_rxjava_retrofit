@@ -24,8 +24,6 @@ public class TrendingRemote implements TrendingDataSource {
 
         return retrofit.create(TrendingApi.class).getTrending(
                 trendingParam.mediaType,trendingParam.timeWindow,trendingParam.apiKey)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
                 .flatMap((response)->{
                     switch(response.code()){
                         case 200:
